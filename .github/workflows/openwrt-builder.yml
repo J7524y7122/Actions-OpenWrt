@@ -80,7 +80,14 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
     - name: SSH connection to Actions
-      uses: P3TERX/debugger-action@master
+    on: workflow_dispatch
+    jobs:
+     debug:
+      runs-on: ubuntu-latest
+      steps:
+       - uses: actions/checkout@v3
+       - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
 
     - name: Download package
       id: package
